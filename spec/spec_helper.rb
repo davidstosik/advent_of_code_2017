@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "adventofcode2017"
+require "advent_of_code_2017"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

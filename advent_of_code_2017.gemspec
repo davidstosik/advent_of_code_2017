@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "adventofcode2017/version"
+require "advent_of_code_2017/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "adventofcode2017"
-  spec.version       = Adventofcode2017::VERSION
+  spec.name          = "advent_of_code_2017"
+  spec.version       = AdventOfCode2017::VERSION
   spec.authors       = ["David Stosik"]
   spec.email         = ["david.stosik+git-noreply@gmail.com"]
 
-  spec.summary       = %q{adventofcode.co/2017}
+  spec.summary       = %q{adventofcode.com/2017}
   spec.description   = %q{My solutions to the Advent of Code 2017}
-  spec.homepage      = "https://github.com/davidstosik/adventofcode2017"
+  spec.homepage      = "https://github.com/davidstosik/advent_of_code_2017"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
