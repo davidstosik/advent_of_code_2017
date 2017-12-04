@@ -1,6 +1,11 @@
-require "advent_of_code_2017/version"
 require "dotenv/load"
 
+require "advent_of_code_2017/version"
+
+require "advent_of_code_2017/day1/solution.rb"
+
 module AdventOfCode2017
-  # Your code goes here...
+  def self.run
+    Day1::Solution.run
+  end
 end
