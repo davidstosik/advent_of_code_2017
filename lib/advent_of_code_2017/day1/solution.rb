@@ -1,4 +1,4 @@
-require_relative "input_fetcher.rb"
+require "advent_of_code_2017/input_fetcher.rb"
 require_relative "captcha_next.rb"
 require_relative "captcha_halfway.rb"
 
@@ -29,7 +29,7 @@ module AdventOfCode2017
       end
 
       def input
-        @_input ||= InputFetcher.new.fetch
+        @_input ||= InputFetcher.new(1).fetch
       end
 
       def digits
