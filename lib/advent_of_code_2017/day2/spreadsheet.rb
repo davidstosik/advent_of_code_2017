@@ -1,3 +1,5 @@
+require_relative "spreadsheet_line"
+
 module AdventOfCode2017
   module Day2
     class Spreadsheet
@@ -7,13 +9,13 @@ module AdventOfCode2017
 
       def checksum
         lines.inject(0) do |memo, line|
-          memo + line.max - line.min
+          memo + line.largest_difference
         end
       end
 
       def self.from_input(input)
         lines = input.lines.map do |line|
-          line.strip.split("\t").map(&:to_i)
+          SpreadsheetLine.from_input(line)
         end
         new(lines)
       end
