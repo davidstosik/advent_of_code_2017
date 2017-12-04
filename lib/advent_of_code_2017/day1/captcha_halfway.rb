@@ -1,38 +1,13 @@
+require_relative "captcha.rb"
+
 module AdventOfCode2017
   module Day1
-    class CaptchaHalfway
-      def self.solve(input)
-        new(input).solve
-      end
-
-      def initialize(input)
-        @input = input
-      end
-
-      def solve
-        digits.each_with_index.inject(0) do |memo, (digit, index)|
-          if digit == repeated_digits[index + offset]
-            memo + digit
-          else
-            memo
-          end
+    class CaptchaHalfway < Captcha
+      def initialize(digits)
+        if digits.size.odd?
+          raise ArgumentError.new("Input should have an even number of digits.")
         end
-      end
-
-      private
-
-      attr_reader :input
-
-      def repeated_digits
-        @_repeated_digits ||= digits + digits
-      end
-
-      def offset
-        digits.size / 2
-      end
-
-      def digits
-        @_digits ||= input.chars.map(&:to_i)
+        super(digits, digits.size / 2)
       end
     end
   end

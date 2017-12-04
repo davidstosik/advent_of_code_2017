@@ -20,16 +20,20 @@ module AdventOfCode2017
 
       def part_one
         puts "Part 1: next digit"
-        puts CaptchaNext.solve(input)
+        puts CaptchaNext.new(digits).solve
       end
 
       def part_two
         puts "Part 2: halfway"
-        puts CaptchaHalfway.solve(input)
+        puts CaptchaHalfway.new(digits).solve
       end
 
       def input
         @_input ||= InputFetcher.new.fetch
+      end
+
+      def digits
+        @_digits ||= input.chars.map(&:to_i)
       end
     end
   end
