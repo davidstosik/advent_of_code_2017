@@ -1,4 +1,4 @@
-require_relative "captcha.rb"
+require_relative "captcha"
 
 module AdventOfCode2017
   module Day1

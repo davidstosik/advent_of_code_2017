@@ -1,6 +1,6 @@
-require "advent_of_code_2017/input_fetcher.rb"
-require_relative "captcha_next.rb"
-require_relative "captcha_halfway.rb"
+require "advent_of_code_2017/input_fetcher"
+require_relative "captcha_next"
+require_relative "captcha_halfway"
 
 module AdventOfCode2017
   module Day1
