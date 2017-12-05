@@ -17,6 +17,36 @@ RSpec.describe AdventOfCode2017::Day3::MemoryLocation do
     end
   end
 
+  describe "#neighbours" do
+    it "returns 8 EuclidianMemoryLocation objects" do
+      location = AdventOfCode2017::Day3::MemoryLocation.new(1)
+      neighbours = location.neighbours
+
+      expect(neighbours.count).to eq 8
+      neighbours.each do |neighbour|
+        expect(neighbour).to be_a(AdventOfCode2017::Day3::EuclidianMemoryLocation)
+      end
+    end
+
+    it "returns all neighbours" do
+      location = AdventOfCode2017::Day3::MemoryLocation.new(1)
+      coordinate_pairs = location.neighbours.map do |neighbour|
+        [neighbour.x, neighbour.y]
+      end
+
+      expect(coordinate_pairs.sort).to eq [
+        [-1, -1],
+        [-1, 0],
+        [-1, 1],
+        [0, -1],
+        [0, 1],
+        [1, -1],
+        [1, 0],
+        [1, 1]
+      ]
+    end
+  end
+
   describe "#euclidian_coordinates" do
     samples = {
       1 => [0, 0],

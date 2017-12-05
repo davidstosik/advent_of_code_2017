@@ -41,6 +41,14 @@ module AdventOfCode2017
         euclidian_coordinates[1]
       end
 
+      def neighbours
+        require_relative "euclidian_memory_location"
+
+        neighbour_coordinates.map do |neighbour_x, neighbour_y|
+          EuclidianMemoryLocation.new(neighbour_x, neighbour_y)
+        end
+      end
+
       private
 
       # 1 => 0
@@ -92,6 +100,19 @@ module AdventOfCode2017
           when 3 # right
             [ circle_rank, -signed_distance_to_axis ]
           end
+      end
+
+      def neighbour_coordinates
+        [
+          [x-1, y-1],
+          [x-1, y  ],
+          [x-1, y+1],
+          [x,   y-1],
+          [x,   y+1],
+          [x+1, y-1],
+          [x+1, y  ],
+          [x+1, y+1]
+        ]
       end
     end
   end

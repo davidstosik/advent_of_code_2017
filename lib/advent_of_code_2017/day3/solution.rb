@@ -1,4 +1,5 @@
 require_relative "memory_location"
+require_relative "spiral_memory"
 
 module AdventOfCode2017
   module Day3
@@ -24,7 +25,8 @@ module AdventOfCode2017
       end
 
       def part_two
-        #TODO
+        puts "Part 2: stress test"
+        puts SpiralMemory.new.fill_until_value_exceeds(INPUT)
       end
     end
   end
