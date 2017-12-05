@@ -19,11 +19,12 @@ module AdventOfCode2017
 
       def part_one
         puts "Part 1: checksum"
-        puts Spreadsheet.from_input(input).checksum
+        puts Spreadsheet.from_input(input).checksum(:largest_difference)
       end
 
       def part_two
-        puts "Part 2: ???"
+        puts "Part 2: evenly divisible values"
+        puts Spreadsheet.from_input(input).checksum(:even_division)
       end
 
       def input

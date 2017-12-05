@@ -7,9 +7,9 @@ module AdventOfCode2017
         @lines = lines
       end
 
-      def checksum
+      def checksum(method = :largest_difference)
         lines.inject(0) do |memo, line|
-          memo + line.largest_difference
+          memo + line.send(method)
         end
       end
 

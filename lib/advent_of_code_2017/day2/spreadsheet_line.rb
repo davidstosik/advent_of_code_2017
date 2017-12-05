@@ -13,9 +13,24 @@ module AdventOfCode2017
         cells.max - cells.min
       end
 
+      def even_division
+        divisor, dividend = evenly_divisible_values
+        dividend / divisor
+      end
+
       private
 
       attr_reader :cells
+
+      def sorted_pairs
+        @_sorted_pairs ||= cells.combination(2).map(&:sort)
+      end
+
+      def evenly_divisible_values
+        sorted_pairs.find do |a, b|
+          b % a == 0
+        end
+      end
     end
   end
 end
