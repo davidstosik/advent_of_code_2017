@@ -28,6 +28,22 @@ module AdventOfCode2017
 
       def manhattan_distance
         circle_rank + distance_to_axis
+        # or euclidian_coordinates.map(&:abs).sum
+      end
+
+      def euclidian_coordinates
+        return [0, 0] if address == 1
+
+        case distance_to_last_address_on_circle / corner_to_corner_distance
+        when 0 # bottom
+          [ -signed_distance_to_axis, -circle_rank ]
+        when 1 # left
+          [ -circle_rank, signed_distance_to_axis ]
+        when 2 # top
+          [ signed_distance_to_axis, circle_rank ]
+        when 3 # right
+          [ circle_rank, -signed_distance_to_axis ]
+        end
       end
 
       private
@@ -61,8 +77,12 @@ module AdventOfCode2017
         end
       end
 
+      def signed_distance_to_axis
+        distance_to_next_corner - circle_rank
+      end
+
       def distance_to_axis
-        (distance_to_next_corner - circle_rank).abs
+        signed_distance_to_axis.abs
       end
     end
   end

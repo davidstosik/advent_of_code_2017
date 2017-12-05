@@ -17,6 +17,32 @@ RSpec.describe AdventOfCode2017::Day3::MemoryLocation do
     end
   end
 
+  describe "#euclidian_coordinates" do
+    samples = {
+      1 => [0, 0],
+      2 => [1, 0],
+      3 => [1, 1],
+      4 => [0, 1],
+      5 => [-1, 1],
+      6 => [-1, 0],
+      7 => [-1, -1],
+      8 => [0, -1],
+      9 => [1, -1],
+      13 => [2, 2],
+      15 => [0, 2],
+      16 => [-1, 2],
+      21 => [-2, -2],
+      25 => [2, -2]
+    }
+
+    samples.each do |address, expected_coordinates|
+      it "returns #{expected_coordinates} for address #{address}" do
+        location = AdventOfCode2017::Day3::MemoryLocation.new(address)
+        expect(location.euclidian_coordinates).to eq expected_coordinates
+      end
+    end
+  end
+
   describe "#circle_rank" do
     samples = {
       1 => 0,
