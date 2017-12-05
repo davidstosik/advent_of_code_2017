@@ -22,39 +22,32 @@ module AdventOfCode2017
       # the distance to run along the whole circle of rank N+1 (4 times the
       # distance separating two corners).
 
+      attr_reader :address
+
       def initialize(address)
         @address = address
       end
 
       def manhattan_distance
         circle_rank + distance_to_axis
-        # or euclidian_coordinates.map(&:abs).sum
+        # or x.abs + y.abs
       end
 
-      def euclidian_coordinates
-        return [0, 0] if address == 1
+      def x
+        euclidian_coordinates[0]
+      end
 
-        case distance_to_last_address_on_circle / corner_to_corner_distance
-        when 0 # bottom
-          [ -signed_distance_to_axis, -circle_rank ]
-        when 1 # left
-          [ -circle_rank, signed_distance_to_axis ]
-        when 2 # top
-          [ signed_distance_to_axis, circle_rank ]
-        when 3 # right
-          [ circle_rank, -signed_distance_to_axis ]
-        end
+      def y
+        euclidian_coordinates[1]
       end
 
       private
-
-      attr_reader :address
 
       # 1 => 0
       # 2..9 => 1
       # 10..25 => 2
       def circle_rank
-        Math.sqrt(address).ceil / 2
+        @_circle_rank ||= Math.sqrt(address).ceil / 2
       end
 
       def last_address_on_circle
@@ -83,6 +76,22 @@ module AdventOfCode2017
 
       def distance_to_axis
         signed_distance_to_axis.abs
+      end
+
+      def euclidian_coordinates
+        return [0, 0] if address == 1
+
+        @_euclidian_coordinates ||=
+          case distance_to_last_address_on_circle / corner_to_corner_distance
+          when 0 # bottom
+            [ -signed_distance_to_axis, -circle_rank ]
+          when 1 # left
+            [ -circle_rank, signed_distance_to_axis ]
+          when 2 # top
+            [ signed_distance_to_axis, circle_rank ]
+          when 3 # right
+            [ circle_rank, -signed_distance_to_axis ]
+          end
       end
     end
   end

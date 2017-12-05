@@ -38,7 +38,7 @@ RSpec.describe AdventOfCode2017::Day3::MemoryLocation do
     samples.each do |address, expected_coordinates|
       it "returns #{expected_coordinates} for address #{address}" do
         location = AdventOfCode2017::Day3::MemoryLocation.new(address)
-        expect(location.euclidian_coordinates).to eq expected_coordinates
+        expect(location.send(:euclidian_coordinates)).to eq expected_coordinates
       end
     end
   end
