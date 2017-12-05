@@ -5,8 +5,14 @@ module AdventOfCode2017
         @string = string
       end
 
-      def valid?
-        words.uniq.count == words.count
+      def valid_for_anagrams?
+        valid? do |word|
+          word.chars.sort.join
+        end
+      end
+
+      def valid?(&block)
+        words.uniq(&block).count == words.count
       end
 
       private

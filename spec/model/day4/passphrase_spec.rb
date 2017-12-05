@@ -16,4 +16,22 @@ RSpec.describe AdventOfCode2017::Day4::Passphrase do
       end
     end
   end
+
+  describe "valid_for_anagrams?" do
+    sample = {
+      "abcde fghij" => true,
+      "abcde xyz ecdab" => false,
+      "aa bb cc dd aaa" => true,
+      "iiii oiii ooii oooi oooo" => true,
+      "oiii ioii iioi iiio" => false
+    }
+
+    sample.each do |passphrase_string, expected|
+      it "returns #{expected} for passphrase '#{passphrase_string}'" do
+        passphrase = AdventOfCode2017::Day4::Passphrase.new(passphrase_string)
+
+        expect(passphrase.valid_for_anagrams?).to eq expected
+      end
+    end
+  end
 end

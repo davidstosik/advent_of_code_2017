@@ -19,12 +19,12 @@ module AdventOfCode2017
 
       def part_one
         puts "Part 1: validity"
-        puts valid_passphrases.count
+        puts part1_valid_passphrases.count
       end
 
       def part_two
-        puts "Part 2: ???"
-        # TODO
+        puts "Part 2: prevent anagrams"
+        puts part2_valid_passphrases.count
       end
 
       def input
@@ -32,12 +32,20 @@ module AdventOfCode2017
       end
 
       def passphrases
-        input.lines.map(&:strip)
+        input.lines.map do |line|
+          AdventOfCode2017::Day4::Passphrase.new(line.strip)
+        end
       end
 
-      def valid_passphrases
+      def part1_valid_passphrases
         passphrases.select do |passphrase|
-          AdventOfCode2017::Day4::Passphrase.new(passphrase).valid?
+          passphrase.valid?
+        end
+      end
+
+      def part2_valid_passphrases
+        passphrases.select do |passphrase|
+          passphrase.valid_for_anagrams?
         end
       end
     end
