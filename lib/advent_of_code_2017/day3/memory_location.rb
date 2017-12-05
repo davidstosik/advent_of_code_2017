@@ -7,7 +7,7 @@ module AdventOfCode2017
       # - Proof for rank 0 (the location of address 1):
       # 2*0 = 0 (address 1 is all corners => distance is 0)
       # - Proof for rank 1 (addresses 2 to 9):
-      # 2*1 = 1 (5-3 = 2; 7-5 = 2; 9-7 = 2)
+      # 2*1 = 2 (5-3 = 2; 7-5 = 2; 9-7 = 2)
       # - Proof for rank N+1:
       # 2*(N+1) = 2*N + 2 (when going up one rank, the distance augments by two units: one on each side)
       #
